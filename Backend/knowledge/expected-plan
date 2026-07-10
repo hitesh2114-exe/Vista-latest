@@ -1,0 +1,44 @@
+Client (React)
+        ↓
+Express Routes
+        ↓
+Middleware
+        ↓
+Controllers
+        ↓
+Models (Mongoose)
+        ↓
+MongoDB
+
+Authentication:
+React
+ ↓
+Passport
+ ↓
+Session
+ ↓
+MongoDB Session Store
+
+Images:
+React
+ ↓
+Multer
+ ↓
+Cloudinary
+ ↓
+MongoDB URL Storage
+
+1. Express Setup
+2. MongoDB Connection
+3. User Model
+4. Listing Model
+5. Listing CRUD API
+6. Controllers
+7. Passport Authentication
+8. Sessions
+9. Protected Routes
+10. Authorization
+11. Joi Validation
+12. Cloudinary Upload
+13. Reviews
+14. Error Handling

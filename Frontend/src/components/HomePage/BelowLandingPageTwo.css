@@ -1,0 +1,61 @@
+.below-landingpage-two {
+  width: 100%;
+  min-height: 60vh;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #e5e4e2;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.below-landingpage-two .MuiBox-root {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+
+.below-landingpage-two .MuiTypography-root {
+  max-width: 100%;
+  word-break: normal;
+}
+
+@media (max-width: 900px) {
+  .below-landingpage-two {
+    min-height: 50vh;
+    padding: 3.5rem 1rem;
+  }
+
+  .below-landingpage-two .MuiTypography-root:first-child,
+  .below-landingpage-two .MuiTypography-root:first-child .MuiTypography-root {
+    font-size: 3.8rem;
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 600px) {
+  .below-landingpage-two {
+    min-height: auto;
+    padding: 3rem 1rem;
+  }
+
+  .below-landingpage-two .MuiTypography-root:first-child,
+  .below-landingpage-two .MuiTypography-root:first-child .MuiTypography-root {
+    font-size: 2.45rem;
+    line-height: 1.1;
+  }
+
+  .below-landingpage-two .MuiTypography-root:last-child {
+    max-width: 92%;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .below-landingpage-two .MuiTypography-root:first-child,
+  .below-landingpage-two .MuiTypography-root:first-child .MuiTypography-root {
+    font-size: 2.1rem;
+  }
+}

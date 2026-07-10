@@ -1,0 +1,406 @@
+.house-outer-box {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 1rem 3rem;
+  gap: 1.5rem;
+}
+
+.house-page {
+  width: min(1240px, 100%);
+}
+
+.house-back-btn {
+  border: 1px solid #e3e3e3;
+  background: #fff;
+  color: #262626;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.house-back-btn:hover {
+  border-color: #65000b;
+  color: #65000b;
+  transform: translateX(-2px);
+}
+
+.house-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.15fr);
+  gap: 1.4rem;
+  align-items: stretch;
+  margin-bottom: 1.4rem;
+}
+
+.house-hero-content {
+  min-height: 460px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.house-label,
+.house-booking-label {
+  color: #65000b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.76rem;
+  margin: 0 0 0.75rem;
+}
+
+.house-hero h1 {
+  color: #171717;
+  font-size: clamp(2.4rem, 5vw, 4.9rem);
+  font-weight: 650;
+  line-height: 1;
+  margin: 0;
+  max-width: 620px;
+}
+
+.house-location {
+  color: #5e5e5e;
+  font-size: 1.05rem;
+  margin: 1rem 0 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.house-location svg,
+.house-highlights svg {
+  color: #65000b;
+}
+
+.house-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.house-highlights span {
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 999px;
+  padding: 0.62rem 0.85rem;
+  color: #262626;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.house-image-wrap {
+  min-height: 460px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #e8e8e8;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.11);
+}
+
+.house-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.house-details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 390px;
+  gap: 1.4rem;
+  align-items: start;
+  margin-bottom: 1.6rem;
+}
+
+.house-main,
+.house-booking-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 0.5rem;
+}
+
+.house-main {
+  padding: 2rem;
+}
+
+.house-section {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ececec;
+}
+
+.house-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.house-section h2 {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin: 0 0 0.9rem;
+  color: #171717;
+}
+
+.house-section p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.house-amenities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.house-amenities div {
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-height: 126px;
+}
+
+.house-amenities svg {
+  color: #65000b;
+  margin-bottom: 0.65rem;
+}
+
+.house-amenities strong,
+.house-host strong {
+  display: block;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+
+.house-amenities span,
+.house-host span {
+  color: #666;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.house-calendar-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.house-calendar-card {
+  border: 1px solid #ececec;
+  background: #fafafa;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.house-calendar-card .MuiDateCalendar-root {
+  width: 100%;
+  max-width: 360px;
+}
+
+.house-calendar-card .MuiPickersDay-root.Mui-disabled,
+.house-booking-card .MuiPickersDay-root.Mui-disabled {
+  color: #b7b7b7;
+  background: #eeeeee;
+}
+
+.house-host {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.house-host-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #65000b;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.house-booking-card {
+  padding: 1.2rem;
+  position: sticky;
+  top: 6rem;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+}
+
+.house-price-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.house-price-row h3 {
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0;
+  color: #171717;
+}
+
+.house-price-row > span {
+  color: #666;
+  white-space: nowrap;
+  margin-bottom: 0.12rem;
+}
+
+.house-booking-card .MuiAlert-root {
+  margin-bottom: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.house-booking-box {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.house-field .MuiOutlinedInput-root {
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.house-field .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #65000b;
+}
+
+.house-field .MuiInputLabel-root.Mui-focused {
+  color: #65000b;
+}
+
+.house-price-breakdown {
+  border: 1px solid #ececec;
+  background: #fafafa;
+  border-radius: 0.5rem;
+  padding: 0.95rem;
+}
+
+.house-price-breakdown div {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 0.45rem;
+}
+
+.house-price-breakdown svg {
+  color: #65000b;
+}
+
+.house-price-breakdown p {
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.65rem 0 0;
+}
+
+.house-note {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  margin: 0.9rem 0 1.1rem;
+}
+
+.house-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid #ececec;
+  padding-top: 1rem;
+  color: #222;
+}
+
+.house-total strong {
+  white-space: nowrap;
+}
+
+.house-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.house-actions button {
+  flex: 1;
+  text-transform: none;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 980px) {
+  .house-hero,
+  .house-details-grid,
+  .house-calendar-section {
+    grid-template-columns: 1fr;
+  }
+
+  .house-hero-content,
+  .house-image-wrap {
+    min-height: 340px;
+  }
+
+  .house-booking-card {
+    position: static;
+  }
+}
+
+@media (max-width: 650px) {
+  .house-outer-box {
+    padding: 5rem 0.8rem 2rem;
+  }
+
+  .house-hero {
+    gap: 0.9rem;
+  }
+
+  .house-hero-content,
+  .house-main,
+  .house-booking-card {
+    padding: 1.1rem;
+  }
+
+  .house-hero-content,
+  .house-image-wrap {
+    min-height: 260px;
+  }
+
+  .house-amenities {
+    grid-template-columns: 1fr;
+  }
+
+  .house-highlights span {
+    width: 100%;
+  }
+
+  .house-actions {
+    flex-direction: column;
+  }
+}
