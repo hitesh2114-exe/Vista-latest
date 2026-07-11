@@ -14,7 +14,7 @@ function Reservations() {
 
   const getReservations = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:8080/reservation/user", {
+      const response = await axios.get("https://vista-latest.onrender.com/reservation/user", {
         withCredentials: true,
       });
       setReservation(response.data);

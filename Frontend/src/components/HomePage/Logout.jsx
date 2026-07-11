@@ -15,21 +15,9 @@ function Logout({ onClose, setUser }) {
     };
   }, []);
 
-  //   const handleLogout = async () => {
-  //     try {
-  //       await axios.get(`http://localhost:8080/`, {
-  //         withCredentials: true,
-  //       });
-  //       onClose();
-  //       //   navigate("/explore-page");
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
   const handleLogOut = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/logout`, {
+      const response = await axios.get(`https://vista-latest.onrender.com/logout`, {
         withCredentials: true,
       });
       console.log(response.data);

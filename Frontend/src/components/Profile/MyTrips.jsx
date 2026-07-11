@@ -13,7 +13,7 @@ function MyTrips() {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:8080/reservation/my-trips", {
+      const response = await axios.get("https://vista-latest.onrender.com/reservation/my-trips", {
         withCredentials: true,
       });
 

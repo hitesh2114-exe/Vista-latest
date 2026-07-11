@@ -39,10 +39,6 @@ function BelowLandingPageTwo() {
             </MotionTypography>
             .
           </MotionTypography>
-          {/* <p style={{ fontSize: "1.1rem" }}>
-            Discover unique homes, stunning destinations, and unforgettable
-            experiences around the world.
-          </p> */}
           <MotionTypography
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

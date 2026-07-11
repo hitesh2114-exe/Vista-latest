@@ -17,7 +17,7 @@ function DeleteHouse({ id, onClose }) {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8080/listing/delete/${id}`, {
+      await axios.delete(`https://vista-latest.onrender.com/listing/delete/${id}`, {
         withCredentials : true
       });
       onClose();

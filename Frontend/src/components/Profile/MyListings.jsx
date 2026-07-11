@@ -9,7 +9,7 @@ function MyListings() {
 
   const getListings = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:8080/listing/user", {
+      const response = await axios.get("https://vista-latest.onrender.com/listing/user", {
         withCredentials: true,
       });
       setListings(response.data);

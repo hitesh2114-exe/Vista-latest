@@ -16,18 +16,6 @@ function AddHome() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // const [formData, setFormData] = useState({
-  //   title: "",
-  //   description: "",
-  //   location: "",
-  //   country: "",
-  //   price: "",
-  //   // image: {
-  //   //   filename: "Random",
-  //   //   url: "",
-  //   // },
-  // });
-
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -52,18 +40,6 @@ function AddHome() {
       [name]: value,
     }));
   };
-
-  // const handleImageChange = (e) => {
-  //   const { value } = e.target;
-
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     image: {
-  //       ...prev.image,
-  //       url: value,
-  //     },
-  //   }));
-  // };
 
   const uploadImage = async (file) => {
     try {
@@ -109,60 +85,6 @@ function AddHome() {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log("Submit clicked");
-
-  //   try {
-  //     // const data = { ...formData };
-
-  //     // if (!data.image.url) {
-  //     //   delete data.image;
-  //     // }
-
-  //     // const response = await axios.post(
-  //     //   "http://localhost:8080/listing/create",
-  //     //   data,
-  //     //   {
-  //     //     withCredentials: true,
-  //     //   }
-  //     // );
-  //     // setLoginMsg(false);
-  //     // console.log(response);
-  //     // navigate("/explore-page");
-
-  //     const data = new FormData();
-
-  //     data.append("title", formData.title);
-  //     data.append("description", formData.description);
-  //     data.append("location", formData.location);
-  //     data.append("country", formData.country);
-  //     data.append("price", formData.price);
-
-  //     if (formData.image) {
-  //       data.append("image", formData.image);
-  //     }
-
-  //     const response = await axios.post(
-  //       "http://localhost:8080/listing/create",
-  //       data,
-  //       {
-  //         withCredentials: true,
-  //       }
-  //     );
-
-  //     setLoginMsg(false);
-  //     console.log(response.data);
-  //     navigate("/explore-page");
-  //   } catch (error) {
-  //     if (error.response?.status === 401) {
-  //       setLoginMsg(true);
-  //     }
-  //     console.log(error);
-  //     console.log(error.response);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -173,7 +95,7 @@ function AddHome() {
       }
 
       const response = await axios.post(
-        "http://localhost:8080/listing/create",
+        "https://vista-latest.onrender.com/listing/create",
         formData,
         {
           withCredentials: true,
@@ -234,13 +156,6 @@ function AddHome() {
           </Link>
         </Alert>
       )}
-
-      {/* <Alert
-          severity="error"
-          sx={{ position: "absolute", top: "5rem", left: "43%", zIndex: "1" }}
-        >
-          You need to login first!
-        </Alert> */}
 
       <main className="add-home-outer-box">
         <section className="add-home-page">
@@ -380,13 +295,7 @@ function AddHome() {
                   />
                 </div>
               )}
-
-              {/* {formData.image.url && (
-                <div className="add-home-preview">
-                  <img src={formData.image.url} alt="Listing preview" />
-                </div>
-              )} */}
-
+              
               <div className="add-home-footer">
                 <p>You can edit listing details after publishing.</p>
 

@@ -17,7 +17,7 @@ function ForUSA() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/listing/all")
+      .get("https://vista-latest.onrender.com/listing/all")
       .then((response) => {
         setHouse(response.data);
       })

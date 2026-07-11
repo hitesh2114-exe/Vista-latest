@@ -19,7 +19,7 @@ function CancelReservation({ id, onClose, fetchData }) {
   const handleCancelReservation = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:8080/reservation/${id}/cancel`
+        `https://vista-latest.onrender.com/reservation/${id}/cancel`
       );
       fetchData();
       onClose();

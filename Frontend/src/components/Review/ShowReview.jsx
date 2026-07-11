@@ -12,7 +12,7 @@ function ShowReview({ reviews = [], id, refreshListing }) {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/me", {
+        const response = await axios.get("https://vista-latest.onrender.com/me", {
           withCredentials: true,
         });
 
@@ -29,7 +29,7 @@ function ShowReview({ reviews = [], id, refreshListing }) {
     const getListing = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/listing/${id}`,
+          `https://vista-latest.onrender.com/listing/${id}`,
           {
             withCredentials: true,
           }
@@ -55,7 +55,7 @@ function ShowReview({ reviews = [], id, refreshListing }) {
   const handleDelete = async (reviewId) => {
     try {
       await axios.delete(
-        `http://localhost:8080/listing/${id}/reviews/${reviewId}`,
+        `https://vista-latest.onrender.com/listing/${id}/reviews/${reviewId}`,
         {
           withCredentials: true,
         }

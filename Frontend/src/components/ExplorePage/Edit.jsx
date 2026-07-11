@@ -25,7 +25,7 @@ function Edit() {
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/listing/${id}`);
+        const response = await axios.get(`https://vista-latest.onrender.com/listing/${id}`);
         setHome(response.data);
       } catch (error) {
         console.error(error);
@@ -61,7 +61,7 @@ function Edit() {
     e.preventDefault();
 
     try {
-      await axios.put("http://localhost:8080/listing/update", formData, {
+      await axios.put("https://vista-latest.onrender.com/listing/update", formData, {
         withCredentials: true,
       });
       navigate(`/house/${home._id}`);

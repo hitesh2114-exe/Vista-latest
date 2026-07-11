@@ -40,7 +40,7 @@ function House() {
 
   const fetchListing = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/listing/${id}`);
+      const response = await axios.get(`https://vista-latest.onrender.com/listing/${id}`);
       setHome(response.data);
     } catch (error) {
       console.error(error);
@@ -49,7 +49,7 @@ function House() {
 
   const reservedDates = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/reservation/${id}`);
+      const response = await axios.get(`https://vista-latest.onrender.com/reservation/${id}`);
       setBookedDates(response.data);
     } catch (error) {
       console.error(error);
@@ -59,7 +59,7 @@ function House() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/me", {
+        const response = await axios.get("https://vista-latest.onrender.com/me", {
           withCredentials: true,
         });
 
@@ -82,7 +82,7 @@ function House() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8080/listing/delete/${home._id}`, {
+      await axios.delete(`https://vista-latest.onrender.com/listing/delete/${home._id}`, {
         withCredentials: true,
       });
       navigate("/explore-page");
@@ -141,7 +141,7 @@ function House() {
     };
 
     try {
-      await axios.post("http://localhost:8080/reservation/create", reservationData, {
+      await axios.post("https://vista-latest.onrender.com/reservation/create", reservationData, {
         withCredentials: true,
       });
 

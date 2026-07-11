@@ -30,7 +30,7 @@ function LandingPage() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/me", {
+        const response = await axios.get("https://vista-latest.onrender.com/me", {
           withCredentials: true,
         });
 
@@ -42,23 +42,6 @@ function LandingPage() {
 
     checkAuth();
   }, []);
-
-  // useEffect(() => {
-  //   console.log(user);
-  // });
-
-  // const handleLogOut = async () => {
-  //   try {
-  //     const response = await axios.get(`http://localhost:8080/logout`, {
-  //       withCredentials: true,
-  //     });
-  //     console.log(response.data);
-  //     setUser(null);
-  //     navigate("/");
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <main className="hero">

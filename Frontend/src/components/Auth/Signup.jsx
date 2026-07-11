@@ -21,7 +21,7 @@ function Signup() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8080/signup`,
+        `https://vista-latest.onrender.com/signup`,
         formData,
         {
           withCredentials: true,
