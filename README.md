@@ -60,7 +60,7 @@ Vista uses session-based authentication with Passport.js and cookies. Since the 
 
 The backend is hosted on Render and may enter an inactive state after a period of inactivity. As a result, **the first request may take one or two minutes while the backend service becomes active again**. Subsequent requests generally respond normally.
 
-Vista is currently a portfolio and learning-focused project. Features such as **online payments, booking cancellation, email notifications, and advanced administrative tools are outside the current scope of the application**.
+Vista is currently a portfolio and learning-focused project. Features such as **online payments, email notifications, and advanced administrative tools are outside the current scope of the application**.
 
 ## Installation and Setup
 
@@ -99,7 +99,6 @@ These variables are used for the server configuration, MongoDB connection, and s
 ## Future Improvements
 
 * Online payment integration.
-* Reservation cancellation and booking management.
 * Advanced property search and filtering.
 * Wishlist and saved properties.
 * Multiple images for individual property listings.
