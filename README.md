@@ -4,6 +4,11 @@ Vista is a full-stack property listing and reservation platform built using the 
 
 The project implements practical full-stack concepts including authentication, authorization, reservation management, database relationships, and frontend-backend integration.
 
+## Live Demo
+
+**Live Application:** https://vista-latest-1.onrender.com/
+
+
 ## About the Project
 
 Vista is designed to demonstrate the development of a complete full-stack web application beyond basic CRUD operations. It combines property management, user authentication, reviews, and reservations into a single platform while focusing on practical application workflows and real-world frontend-backend integration.
