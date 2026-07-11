@@ -124,5 +124,96 @@ The cross-origin authentication flow can be summarized as:
 
 **React Frontend → Axios Request with Credentials → CORS Validation → Session Cookie Sent → Express Session → Passport.js → Authenticated Request**
 
+## Property Listing Management and Ownership Flow
+
+Vista allows authenticated users to **create, view, update, and delete property listings**. Each listing contains property information such as **title, description, location, country, price, and image details**.
+
+When a new listing is created, the backend associates the listing with the currently authenticated user by storing the user's reference in the **`owner` field**. This relationship is used to identify the creator of the property and control listing management operations.
+
+For update and delete operations, the backend verifies the **listing owner** before allowing the requested action. This prevents authenticated users from modifying or deleting properties created by other users.
+
+When a listing is deleted, Vista also removes **reservations associated with that listing**. This cleanup prevents deleted property references from remaining in reservation records and avoids errors when users access sections such as **My Trips**.
+
+The listing lifecycle can be summarized as:
+
+**Authenticated User → Create Listing → Assign Owner → Store in MongoDB → View / Update / Delete Listing → Ownership Verification → Related Reservation Cleanup on Deletion**
+
+## Image Handling and Cloudinary Integration
+
+Vista uses **Cloudinary** to host property images externally instead of storing image files directly on the backend server. This keeps image storage separate from the application server and avoids depending on the backend's local file system.
+
+While creating a property listing, a **Cloudinary-hosted image URL** is provided through the frontend. The React application stores the URL in the listing form data and sends it to the backend along with the remaining property information.
+
+The backend stores the **image URL and related image information** as part of the listing document in MongoDB. When property data is requested, the frontend uses the stored URL to display the image.
+
+The image handling flow is:
+
+**Image Hosted on Cloudinary → Image URL Provided in Listing Form → React Sends Listing Data → Backend Stores Image URL → MongoDB → Frontend Displays Image Using Stored URL**
+
+This approach keeps the current image handling process simple while allowing property images to be delivered through Cloudinary's cloud infrastructure.
+
+## Reservation System and Availability Logic
+
+Vista includes a reservation system that allows authenticated users to **select check-in and check-out dates, choose the number of guests, and reserve an available property**. A property owner is prevented from reserving their own listing.
+
+Before creating a reservation, the backend checks existing bookings for the selected property. A reservation conflict exists when an existing booking overlaps with the requested date range. Vista checks this using the following condition:
+
+**Existing Check-In < Requested Check-Out**
+
+**Existing Check-Out > Requested Check-In**
+
+If both conditions are true, the requested reservation overlaps with an existing booking and the backend prevents the new reservation from being created.
+
+When the selected dates are available, Vista calculates the **number of nights and total reservation price**, creates a new reservation, and connects it with both the **authenticated user and selected listing**.
+
+Existing reservation dates are retrieved by the frontend and reflected in the reservation calendar so that **already booked dates cannot be selected**.
+
+The reservation flow can be summarized as:
+
+**Select Dates → Choose Guests → Submit Reservation → Validate User and Listing → Check Date Overlap → Calculate Price → Create Reservation → Store in MongoDB → Refresh Booked Dates**
+
+## My Trips and My Listings
+
+Vista provides user-specific sections for managing **reservations and owned properties**.
+
+### My Trips
+
+The **My Trips** section retrieves reservations associated with the currently authenticated user. Reservation data is connected with the related listing information, allowing the frontend to display details about the properties booked by the user.
+
+Users can view their reservation information and navigate to the related property listing directly from their trip details.
+
+### My Listings
+
+The **My Listings** section displays properties created by the currently authenticated user. Listings are filtered using the **owner reference**, ensuring that users only see properties associated with their own account.
+
+From this section, property owners can access and manage their listings.
+
+These features use the authenticated user session to provide **user-specific data without requiring the frontend to manually provide a user ID**.
+
+## Review and Rating System
+
+Vista allows authenticated users to **add ratings and reviews to property listings**. Each review stores the submitted **rating, comment, and author reference**, connecting the review to the user who created it.
+
+When a review is added, its reference is also associated with the related listing. This allows the backend to retrieve and populate review information when property details are requested.
+
+Review authorization is based on the **author reference**, ensuring that restricted review operations can only be performed by the appropriate user.
+
+The review flow can be summarized as:
+
+**Authenticated User → Submit Rating and Comment → Create Review → Assign Author → Connect Review with Listing → Store in MongoDB → Display with Property Details**
+
+## API Routes and Backend Request Flow
+
+Vista's backend is organized into separate routes for **user authentication, property listings, reviews, and reservations**. This separation keeps the API structure modular and makes each application feature easier to manage.
+
+Incoming requests first reach the related **Express route**. Depending on the operation, the request may pass through **authentication or authorization middleware** before reaching the controller.
+
+The controller handles the main application logic, interacts with the required **Mongoose model**, and sends the appropriate response back to the frontend.
+
+The general backend request flow is:
+
+**Frontend Request → Express Route → Authentication / Authorization Middleware → Controller → Mongoose Model → MongoDB → API Response → React Frontend**
+
+This structure separates **routing, access control, business logic, and database operations**, making the backend easier to understand and maintain.
 
 
