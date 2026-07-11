@@ -216,4 +216,47 @@ The general backend request flow is:
 
 This structure separates **routing, access control, business logic, and database operations**, making the backend easier to understand and maintain.
 
+## API Endpoints
 
+Vista's backend exposes REST APIs for **authentication, property listings, reviews, and reservations**. Protected routes use authentication middleware to verify the current user session.
+
+### User Authentication
+
+| Method | Endpoint  | Description                               |
+| ------ | --------- | ----------------------------------------- |
+| POST   | `/signup` | Register a new user                       |
+| POST   | `/login`  | Authenticate and log in a user            |
+| GET    | `/logout` | Log out the current user                  |
+| GET    | `/me`     | Retrieve the currently authenticated user |
+
+### Property Listings
+
+| Method | Endpoint              | Description                                   |
+| ------ | --------------------- | --------------------------------------------- |
+| GET    | `/listing/all`        | Retrieve all property listings                |
+| GET    | `/listing/user`       | Retrieve listings owned by the logged-in user |
+| GET    | `/listing/:id`        | Retrieve a specific property listing          |
+| POST   | `/listing/create`     | Create a new property listing                 |
+| PUT    | `/listing/update`     | Update an existing property listing           |
+| DELETE | `/listing/delete/:id` | Delete a property listing                     |
+
+### Reviews
+
+| Method | Endpoint                         | Description                             |
+| ------ | -------------------------------- | --------------------------------------- |
+| POST   | `/listing/:id/review`            | Add a review to a property listing      |
+| DELETE | `/listing/:id/reviews/:reviewId` | Delete a review from a property listing |
+
+### Reservations
+
+| Method | Endpoint                       | Description                                          |
+| ------ | ------------------------------ | ---------------------------------------------------- |
+| POST   | `/reservation/create`          | Create a new property reservation                    |
+| GET    | `/reservation/all`             | Retrieve all reservations                            |
+| GET    | `/reservation/my-trips`        | Retrieve reservations of the logged-in user          |
+| GET    | `/reservation/user`            | Retrieve reservations related to the current user    |
+| GET    | `/reservation/host/:listingId` | Retrieve reservations for a specific hosted property |
+| PATCH  | `/reservation/:id/cancel`      | Cancel an existing reservation                       |
+| GET    | `/reservation/:listingId`      | Retrieve booked dates for a specific property        |
+
+Routes that perform **user-specific or restricted operations** use the `isLoggedIn` middleware to verify the authenticated session before executing the controller logic.
