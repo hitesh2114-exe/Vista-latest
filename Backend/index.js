@@ -25,6 +25,8 @@ const LocalStrategy = require("passport-local").Strategy;
 connectDB();
 /* connectDB(); is basically for establishing connection between mongodb and backend. */
 
+app.set("trust proxy", 1);
+
 app.use(express.json());
 /*meaning : If the request body contains JSON data, convert it into a JavaScript object and put it inside req.body, below is the example 
 app.post("/random", (req, res) => {
