@@ -8,6 +8,7 @@ The project implements practical full-stack concepts including authentication, a
 
 **Live Application:** https://vista-latest-1.onrender.com/
 
+Note: Before testing the live application, please review the Deployment Notes and Current Limitations section.
 
 ## About the Project
 
