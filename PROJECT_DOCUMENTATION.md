@@ -260,3 +260,67 @@ Vista's backend exposes REST APIs for **authentication, property listings, revie
 | GET    | `/reservation/:listingId`      | Retrieve booked dates for a specific property        |
 
 Routes that perform **user-specific or restricted operations** use the `isLoggedIn` middleware to verify the authenticated session before executing the controller logic.
+
+## Reservation Cancellation and Status Management
+
+Vista allows users to cancel an existing reservation through the reservation management system. Instead of deleting the reservation record, the application updates the reservation using a dedicated cancellation endpoint.
+
+The cancellation request is handled through the **PATCH /reservation/:id/cancel** route. The backend identifies the reservation using its ID and updates its current status, allowing the application to preserve the reservation record while marking it as cancelled.
+
+Keeping cancelled reservations in the database helps preserve booking history and reservation information instead of permanently removing the record.
+
+## Listing Deletion and Related Reservation Cleanup
+
+Vista maintains **data consistency between property listings and reservations** when a property is removed from the platform. Since reservation documents contain a reference to their related listing, deleting only the listing could leave reservation records pointing to a property that no longer exists.
+
+To prevent these invalid references, Vista removes **all reservations associated with a listing when that listing is deleted**. This ensures that sections such as **My Trips** do not attempt to retrieve or display information from a deleted property.
+
+The cleanup process can be summarized as:
+
+**Delete Listing Request → Verify Listing Ownership → Find Related Reservations → Delete Associated Reservations → Delete Listing → Update Application Data**
+
+This approach prevents **orphaned reservation records** and keeps the relationships between listings and reservations consistent.
+
+## Frontend Reservation Date Handling
+
+Vista uses **MUI Date Pickers and Day.js** to manage reservation dates on the frontend. Users select their **check-in and check-out dates** through the reservation interface, while existing booked dates are retrieved from the backend for the selected property.
+
+The booked date information is used to restrict unavailable dates in the calendar and prevent users from selecting already reserved periods. After a successful reservation, the frontend retrieves the updated booked dates again so that the calendar reflects the latest property availability without requiring a full page refresh.
+
+Day.js is also used to manage date values and calculate the selected stay duration for reservation-related price information.
+
+The frontend date flow can be summarized as:
+
+**Load Property → Fetch Booked Dates → Display Reservation Calendar → Select Dates → Create Reservation → Refresh Booked Dates → Update Calendar Availability**
+
+## Error Handling and Protected Requests
+Vista handles protected operations through **authentication middleware and HTTP response status codes**. When an unauthenticated user attempts to access a protected backend route, the server returns an **unauthorized (`401`) response**.
+
+The React frontend checks these responses and displays appropriate user feedback, such as prompting the user to log in before creating a listing or performing other restricted actions. Authenticated API requests use **`withCredentials: true`** so that the browser can include the active session cookie.
+
+The application also uses backend validation and error responses to prevent invalid operations such as **overlapping reservations, unauthorized listing management, and restricted user actions**.
+
+This approach allows the frontend and backend to work together to provide clear feedback while keeping protected operations controlled by the server.
+
+## Deployment Architecture
+
+Vista's **frontend and backend are deployed separately on Render**. The React frontend communicates with the deployed Express backend through REST API requests.
+
+The application uses **MongoDB Atlas** as its cloud-hosted database for storing users, listings, reviews, reservations, and session data. **Cloudinary** is used to host property images, while the corresponding image URLs are stored with listing data in MongoDB.
+
+The deployment architecture can be summarized as:
+
+**React Frontend (Render) → Express Backend (Render) → MongoDB Atlas**
+
+**Cloudinary → Property Image Hosting**
+
+Because the backend uses Render's current hosting configuration, the service may become inactive after a period of inactivity. The **first request may take one or two minutes while the backend becomes active again**, after which subsequent requests generally respond normally.
+
+## Technical Summary
+
+Vista demonstrates the development of a complete **MERN stack application** with a separate frontend and backend architecture. The project combines **session-based authentication, ownership-based authorization, MongoDB relationships, REST APIs, property management, reviews, and reservation workflows** within a single application.
+
+The reservation system introduces practical application logic such as **date availability checks, overlapping booking prevention, dynamic price calculation, reservation cancellation, and user-specific booking management**. The application also handles data relationships between users, listings, reviews, and reservations while maintaining consistency when related resources are modified or deleted.
+
+Through its development and deployment, Vista demonstrates practical experience with **React, Node.js, Express.js, MongoDB, Mongoose, Passport.js, session management, cross-origin authentication, cloud services, and full-stack debugging**.
+
