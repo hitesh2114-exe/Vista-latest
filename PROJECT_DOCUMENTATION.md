@@ -316,6 +316,37 @@ The deployment architecture can be summarized as:
 
 Because the backend uses Render's current hosting configuration, the service may become inactive after a period of inactivity. The **first request may take one or two minutes while the backend becomes active again**, after which subsequent requests generally respond normally.
 
+## Technical Challenges and Solutions
+
+During the development of Vista, several technical challenges were encountered while integrating the frontend, backend, database, and deployment environment.
+
+### Cross-Origin Session Authentication
+
+Since the frontend and backend are deployed on separate origins, maintaining Passport.js sessions required correct **CORS, cookie, and credential configuration**. Axios requests use **`withCredentials: true`**, while the backend allows credential-based requests from the frontend origin.
+
+### Session Persistence
+
+Storing sessions only in backend memory is not suitable for a deployed application. Vista uses **Connect Mongo** to store Express Session data in MongoDB, allowing authenticated sessions to persist independently of the backend server's memory.
+
+### Reservation Date Conflicts
+
+The reservation system requires preventing multiple users from booking the same property for overlapping dates. Vista compares the requested date range with existing reservations and rejects bookings when an overlap is detected.
+
+### Reservation Calendar Updates
+
+After creating a reservation, the booked dates must immediately appear unavailable in the frontend calendar. The frontend retrieves the updated reservation dates after a successful booking and refreshes the calendar availability.
+
+### Deleted Listing References
+
+Deleting a listing while keeping its reservations created invalid listing references and caused issues in **My Trips**. Vista resolves this by deleting reservations associated with the property when the listing itself is removed.
+
+### Date and Time Handling
+
+Reservation dates required consistent handling between the frontend, backend, and MongoDB. **Day.js and JavaScript date values** are used to manage selected dates and reservation calculations across the application.
+
+These challenges provided practical experience in debugging **full-stack integration, authentication, database relationships, reservation logic, and deployed application behavior**.
+
+
 ## Technical Summary
 
 Vista demonstrates the development of a complete **MERN stack application** with a separate frontend and backend architecture. The project combines **session-based authentication, ownership-based authorization, MongoDB relationships, REST APIs, property management, reviews, and reservation workflows** within a single application.
