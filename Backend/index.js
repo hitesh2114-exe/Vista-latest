@@ -22,7 +22,6 @@ const { MongoStore } = require("connect-mongo");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-
 connectDB();
 /* connectDB(); is basically for establishing connection between mongodb and backend. */
 
@@ -44,7 +43,7 @@ e.g. 'username=Hitesh&email=hitesh@gmail.com'  converts to
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://vista-latest-1.onrender.com",
     credentials: true,
   })
 );
