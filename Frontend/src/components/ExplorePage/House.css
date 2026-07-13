@@ -105,7 +105,8 @@
 }
 
 .house-image-wrap {
-  min-height: 460px;
+  height: 460px;
+  max-height: 460px;
   border-radius: 0.5rem;
   overflow: hidden;
   background: #e8e8e8;
@@ -362,9 +363,13 @@
     grid-template-columns: 1fr;
   }
 
-  .house-hero-content,
-  .house-image-wrap {
+  .house-hero-content {
     min-height: 340px;
+  }
+
+  .house-image-wrap {
+    height: 340px;
+    max-height: 340px;
   }
 
   .house-booking-card {
@@ -387,9 +392,13 @@
     padding: 1.1rem;
   }
 
-  .house-hero-content,
-  .house-image-wrap {
+  .house-hero-content {
     min-height: 260px;
+  }
+
+  .house-image-wrap {
+    height: 260px;
+    max-height: 260px;
   }
 
   .house-amenities {
